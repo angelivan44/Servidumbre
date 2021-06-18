@@ -1,24 +1,23 @@
-import styled from "@emotion/styled";
-import color from "../app/color";
-
 import { useHistory } from "react-router";
-import HeaderArea from "../components/HeaderArea";
-import ItemList from "../components/ItemList";
-
-export default function Main() {
+import styled from "@emotion/styled";
+import logo from '../assets/logo.svg'
+import Input from "../components/Input";
+import Button from "../components/Button";
+import color from "../app/color";
+export default function Recover() {
 
   const history = useHistory()
  
   return (
     <StyleDiv>
-      <aside>
-        <HeaderArea name="Angel"></HeaderArea>
-        <div>
-          <ItemList text="Dashboard" type="home"></ItemList>
-          <ItemList text="Plano" type="autodesk"></ItemList>
-          <ItemList text="Formato" type="word"></ItemList>
-        </div>
-      </aside>
+      <img src={logo}/>
+      <form>
+        <Input type="email" label="Email"/>
+        <Button type="submit"/>
+      </form>
+      <p onClick={()=>{
+        history.push("/")
+      }}>Login</p>
     </StyleDiv>
   );
 }
@@ -32,8 +31,9 @@ flex-direction:column;
 align-items:center;
 margin:auto;
 & img {
-  margin-top: 10px;
+  margin-top: 50px;
   margin-bottom: 20px;
+
 }
 
 & form {

@@ -6,7 +6,10 @@ let newProductWindow
 
 app.on('ready', ()=>{
 
-  mainview = new BrowserWindow({})
+  mainview = new BrowserWindow({
+    width:1457,
+    height:768,
+  })
   mainview.loadURL(`http://localhost:3000/`)
   mainview.show()
   const mainMenu = Menu.buildFromTemplate(templateMenu)
@@ -33,7 +36,7 @@ const templateMenu = [
 
 function createNewProductWindow(){
   newProductWindow=  new BrowserWindow({
-    width:400,
-    height:300,
+    width:1457,
+    height:768,
     title:"Add a new product"
   })}

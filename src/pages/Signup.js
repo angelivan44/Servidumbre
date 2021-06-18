@@ -4,7 +4,7 @@ import logo from '../assets/logo.svg'
 import Input from "../components/Input";
 import Button from "../components/Button";
 import color from "../app/color";
-export default function Login() {
+export default function SignUp() {
 
   const history = useHistory()
  
@@ -14,14 +14,13 @@ export default function Login() {
       <form>
         <Input type="email" label="Email"/>
         <Input type="password" label="Password"/>
-        <Button onClick={()=>{history.push("/main")}} type="submit"/>
+        <Input type="text" label="Name"/>
+        <Input type="file" label="Avatar"/>
+        <Button type="submit"/>
       </form>
       <p onClick={()=>{
-        history.push("/signup")
-      }}>Sign Up</p>
-      <p onClick={()=>{
-        history.push("/recover")
-      }}>Forgot my Password</p>
+        history.push("/")
+      }}>Login</p>
     </StyleDiv>
   );
 }
@@ -35,9 +34,8 @@ flex-direction:column;
 align-items:center;
 margin:auto;
 & img {
-  margin-top: 50px;
+  margin-top: 10px;
   margin-bottom: 20px;
-
 }
 
 & form {
