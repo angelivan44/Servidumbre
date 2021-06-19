@@ -11,7 +11,8 @@ import {
   RiYoutubeFill,
   RiWhatsappFill,
   RiQuestionAnswerFill,
-  RiCheckboxFill
+  RiCheckboxFill,
+  RiLogoutBoxFill,
 } from "react-icons/ri";
 import { SiAutodesk } from "react-icons/si";
 import { FaFileCsv } from "react-icons/fa";
@@ -32,7 +33,8 @@ export default function Icon({ type }) {
     facebook: <RiFacebookBoxFill/>,
     youtube: <RiYoutubeFill/>,
     whatsapp : <RiWhatsappFill/>,
-    answer: <RiQuestionAnswerFill/>
+    answer: <RiQuestionAnswerFill/>,
+    logout:<RiLogoutBoxFill/>
   };
 
   return <>{setIcon[type]}</>;

@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 import color from "../app/color";
 import Icon from "./Icon";
-export default function ItemList({text , type , selected}) {
+export default function ItemList({text , type , selected , onClick}) {
  
   return (
-    <StyleDiv selected={selected}> 
+    <StyleDiv selected={selected} onClick={onClick}> 
       <Icon type={type}></Icon>
       <p>{text}</p>
     </StyleDiv>
@@ -18,6 +18,7 @@ const StyleDiv = styled.div`
   height: 40px;
   align-items: center;
   padding: 8px 8px;
+  box-sizing: border-box;
   border-radius: 4px;
   background-color: ${props => (props.selected ? color.blue_selected : "#fff" )};
   gap:32px;

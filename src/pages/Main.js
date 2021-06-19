@@ -1,52 +1,54 @@
 import styled from "@emotion/styled";
-import color from "../app/color";
-
 import { useHistory } from "react-router";
 import HeaderArea from "../components/HeaderArea";
 import ItemList from "../components/ItemList";
+import Plano from "../components/Plano";
+import Dashboard from "../components/Dashboard";
+import { useState } from "react";
+import Formato from "../components/Formato";
 
 export default function Main() {
+  const history = useHistory();
+  const [view , setView] = useState("formato")
+  const viewElement = {
+    dashboard : <Dashboard/>,
+    plano: <Plano/>,
+    formato:<Formato/>
+  }
 
-  const history = useHistory()
- 
   return (
     <StyleDiv>
       <aside>
         <HeaderArea name="Angel"></HeaderArea>
         <div>
-          <ItemList text="Dashboard" type="home"></ItemList>
-          <ItemList text="Plano" type="autodesk"></ItemList>
-          <ItemList text="Formato" type="word"></ItemList>
+          <ItemList selected={view==="dashboard"} text="Dashboard" type="home" onClick={()=>{setView("dashboard")}}></ItemList>
+          <ItemList selected={view==="plano"}  text="Plano" type="autodesk" onClick={()=>{setView("plano")}}></ItemList>
+          <ItemList selected={view==="formato"}  text="Formato" type="word" onClick={()=>{setView("formato")}}></ItemList>
+          <ItemList   text="Logout" type="logout" onClick={()=>{history.push("/")}}></ItemList>
         </div>
       </aside>
+      <StyleMain>
+       {viewElement[view]}
+      </StyleMain>
     </StyleDiv>
   );
 }
 
 const StyleDiv = styled.div`
-width:720px;
-height:500px;
-border: 1px solid #e5e5e5;
-display:flex;
-flex-direction:column;
-align-items:center;
-margin:auto;
-& img {
-  margin-top: 10px;
-  margin-bottom: 20px;
-}
-
-& form {
-  width: 260px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  gap:10px;
-}
-
-& p {
-  color: ${color.blue}
-}
-
-`
+  height: 500px;
+  display: flex;
+  border: 1px solid #e5e5e5;
+  & aside {
+    width: 256px;
+    border: 1px solid #e5e5e5;
+  }
+`;
+const StyleMain = styled.main`
+  display: flex;
+`;
+const StyleTab = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+`;

@@ -15,10 +15,10 @@ export default function HeaderArea({src, name, email}) {
 const StyleDiv = styled.div`
   display:flex;
   flex-direction:column;
-  width: 256px;
+  width: 237px;
   height: 172px;
-  padding-left: 16px;
-  padding-top: 40px;
+  box-sizing: border-box;
+  padding: 16px 40px;
   border-bottom:1px solid #E5E5E5;
   background-color: ${props => (props.selected ? color.blue_selected : "#fff" )};
   
@@ -33,12 +33,14 @@ const StyleDiv = styled.div`
     font-weight: 500;
     line-height:30px;
     margin:0;
+    width:100%;
   }
 
   & p {
     font-size: 14px;
     font-weight: 400;
-    color:${color.gris_text}
+    color:${color.gris_text};
+    width:100%;
   }
 
 `

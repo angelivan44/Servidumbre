@@ -38,31 +38,31 @@ export default function DescriptionArea({ name, email, type}) {
 
 const StyleDiv = styled.div`
   width: 720px;
-  height: 484px;
   padding:40px 40px;
+  max-height: 350px;
+  box-sizing:border-box;
   border:1px solid #E5E5E5;
   background-color: ${props => (props.selected ? color.blue_selected : "#fff" )};
   & > div {
     display:flex;
     justify-content:space-between;
-    padding:20px 20px;
     & > div {
       display:flex;
       flex-direction:column;
       justify-content:space-between;
+      gap:5px;
     }
   };
 
   & img {
-    margin-bottom:24px ;
+    height:200px;
+    width:300px;
   }
   & > h2 {
     font-size:20px;
     font-weight: 500;
     line-height:30px;
-    margin:0;
     text-align:center;
-    margin:10px 0;
     color:${color.gris_text}
   }
 

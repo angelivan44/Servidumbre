@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 import color from "../app/color";
 import Icon from "./Icon";
-export default function TabItem({type , name , status, selected}) {
+export default function TabItem({type , name , status, selected, onClick}) {
  
   return (
-    <StyleDiv selected={selected} > 
+    <StyleDiv selected={selected} onClick={onClick}> 
      <Icon type={type}></Icon>
      <h2>{name}</h2>
      <p>{status}</p>
@@ -47,5 +47,7 @@ border-radius: 4px;
     margin:0;
     
   }
-
+  &:hover{
+    background-color:${color.gris_hover};
+  }
 `
