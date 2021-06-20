@@ -1,10 +1,6 @@
 import styled from "@emotion/styled";
-import color from "../app/color";
 
 import { useHistory } from "react-router";
-import HeaderArea from "../components/HeaderArea";
-import ItemList from "../components/ItemList";
-import TabItem from "../components/TabItem";
 import Card from "../components/Card";
 import DescriptionArea from "../components/Description";
 import TabFormato from "./TabFormato";

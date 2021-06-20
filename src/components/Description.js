@@ -8,7 +8,7 @@ import contrato from '../assets/contrato.svg';
 import recibo from '../assets/recibo.svg';
 import valorizacion from '../assets/valorizacion.svg';
 
-export default function DescriptionArea({ name, email, type}) {
+export default function DescriptionArea({ name, email, type, paths}) {
  
   const setImage ={
     plano: plano,
@@ -18,6 +18,25 @@ export default function DescriptionArea({ name, email, type}) {
     valorizacion:valorizacion,
   }
 
+  const sendPython = ()=>{
+    switch (type) {
+      case "plano":
+        console.log("funcion de generar planos");
+        break;
+      case "autorizacion":
+        console.log("funcion para generar autorizaciones");
+        break;
+      case "contrato":
+        console.log("funcion para generar contrato");
+        break;
+      case "recibo":
+        console.log("funcion para generar recibo");
+        break;
+      case "valorizacion":
+        console.log("funcion para generar valorizacion");
+        break;
+    }
+  }
 
   return (
     <StyleDiv > 
@@ -26,7 +45,7 @@ export default function DescriptionArea({ name, email, type}) {
        <img src={setImage[type]}/>
        <div>
          <Card title="STATUS" type="status" content="esto es uno de prueba asdasd asdasd asdasd asdas asdsd s ds asdasds"></Card>
-         <Button selected={false} content={type}></Button>
+         <Button selected={false} content={type} onClick={()=>{sendPython()}}></Button>
        </div>
      </div>
      <h2>{name}</h2>

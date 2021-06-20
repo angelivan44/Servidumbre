@@ -4,7 +4,7 @@ import Main from "./pages/Main";
 import SignUp from "./pages/Signup";
 import Recover from "./pages/Recover"
 
-
+  
 function App() {
   return (
     <Router>

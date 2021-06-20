@@ -17,24 +17,24 @@ import {
 import { SiAutodesk } from "react-icons/si";
 import { FaFileCsv } from "react-icons/fa";
 import { IoIosContacts } from "react-icons/io";
-export default function Icon({ type }) {
+export default function Icon({ type , onClick}) {
   const setIcon = {
-    excel: <RiFileExcel2Fill />,
-    home: <RiCollageFill />,
-    word: <RiFileWord2Fill />,
-    user: <RiUserFill />,
-    autodesk: <SiAutodesk />,
-    csv: <FaFileCsv />,
-    download: <RiChatDownloadFill />,
-    status: <RiCheckboxFill />,
-    resources: <RiChromeFill />,
-    social: <IoIosContacts />,
-    web:<RiSafariFill/>,
-    facebook: <RiFacebookBoxFill/>,
-    youtube: <RiYoutubeFill/>,
-    whatsapp : <RiWhatsappFill/>,
-    answer: <RiQuestionAnswerFill/>,
-    logout:<RiLogoutBoxFill/>
+    excel: <RiFileExcel2Fill onClick={onClick} />,
+    home: <RiCollageFill onClick={onClick} />,
+    word: <RiFileWord2Fill onClick={onClick}/>,
+    user: <RiUserFill onClick={onClick}/>,
+    autodesk: <SiAutodesk onClick={onClick}/>,
+    csv: <FaFileCsv onClick={onClick}/>,
+    download: <RiChatDownloadFill onClick={onClick}/>,
+    status: <RiCheckboxFill  onClick={onClick}/>,
+    resources: <RiChromeFill onClick={onClick} />,
+    social: <IoIosContacts onClick={onClick}/>,
+    web:<RiSafariFill onClick={onClick}/>,
+    facebook: <RiFacebookBoxFill onClick={onClick}/>,
+    youtube: <RiYoutubeFill onClick={onClick}/>,
+    whatsapp : <RiWhatsappFill onClick={onClick}/>,
+    answer: <RiQuestionAnswerFill onClick={onClick}/>,
+    logout:<RiLogoutBoxFill onClick={onClick}/>
   };
 
   return <>{setIcon[type]}</>;

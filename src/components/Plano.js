@@ -12,7 +12,9 @@ import { useState } from "react";
 export default function Plano() {
   const [itemSelect, setItemSelect] = useState("excel");
   const history = useHistory();
+  const [paths, setPaths] = useState({urlExcel:"", urlDxf:"",urlCsv:"", urlDir:""})
 
+  console.log(paths)
   return (
     <>
       <div>
@@ -21,6 +23,8 @@ export default function Plano() {
             type="excel"
             name="Excel"
             status="ok"
+            paths={paths}
+            setPaths={setPaths}
             selected={itemSelect=="excel"}
             onClick={() => {
               setItemSelect("excel");
@@ -30,6 +34,8 @@ export default function Plano() {
             type="autodesk"
             name="Dxf"
             status="ok"
+            paths={paths}
+            setPaths={setPaths}
             selected={itemSelect=="autodesk"}
             onClick={() => {
               setItemSelect("autodesk");
@@ -39,6 +45,8 @@ export default function Plano() {
             type="csv"
             name="Csv"
             status="ok"
+            paths={paths}
+            setPaths={setPaths}
             selected={itemSelect=="csv"}
             onClick={() => {
               setItemSelect("csv");
@@ -48,6 +56,8 @@ export default function Plano() {
             type="download"
             name="Exportacion"
             status="ok"
+            paths={paths}
+            setPaths={setPaths}
             selected={itemSelect=="download"}
             onClick={() => {
               setItemSelect("download");
@@ -55,7 +65,7 @@ export default function Plano() {
           ></TabItem>
         </StyleTab>
         <div>
-          <DescriptionArea type="plano"></DescriptionArea>
+          <DescriptionArea type="plano" paths={paths}></DescriptionArea>
         </div>
       </div>
       <div>
