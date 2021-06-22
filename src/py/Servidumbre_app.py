@@ -6,14 +6,23 @@ from shapely.geometry import *
 import os
 
 def mainFuntion(data_url,dxf_url,directory,exportacion):
-       
-    data = pd.read_excel(data_url, sheet_name="DATABASE").to_dict("record")
 
-    general_data = pd.read_excel(data_url,sheet_name="GENERAL").to_dict("record")
+    excelPath = data_url.replace("\\","\\\\")
+    
+    dxfPath = dxf_url.replace("\\","\\\\")
+    directoryPath = directory.replace("\\","\\\\")
+    exportacionPath = exportacion.replace("\\","\\\\")
 
-    areas_list = os.listdir(directory)
+    print(excelPath)
+    print(dxfPath)
 
-    main_line = pd.read_excel(data_url, sheet_name="LINEA")
+    data = pd.read_excel(excelPath, sheet_name="DATABASE").to_dict("record")
+
+    general_data = pd.read_excel(excelPath,sheet_name="GENERAL").to_dict("record")
+
+    areas_list = os.listdir(directoryPath)
+
+    main_line = pd.read_excel(excelPath, sheet_name="LINEA")
 
 
     def conver_coord (x):
@@ -29,13 +38,7 @@ def mainFuntion(data_url,dxf_url,directory,exportacion):
 
     line_coords = dataFrame_to_list(main_line)
 
-
-
-
     data_cajetin = ["EST","TIP","EXP","PRO","NOMBRE","CULTIVO","LONG","ANCHO","AREA","AREAE","AREAA"]
-
-
-
 
     dic_attributes = {"EST":"NUMEROESTRUCTURA",
                             "TIP":"TIPO",
@@ -144,14 +147,13 @@ def mainFuntion(data_url,dxf_url,directory,exportacion):
 
 
 
-    doc = ezdxf.readfile(dxf_url)
-    doc
+    doc = ezdxf.readfile(dxfPath)
 
 
 
 
     for index,_data in enumerate(list_cajetin):
-        actual_doc = ezdxf.readfile(dxf_url)
+        actual_doc = ezdxf.readfile(dxfPath)
         psp = actual_doc.layout(name=None)
         msp = actual_doc.modelspace()
         values = {}
@@ -169,7 +171,7 @@ def mainFuntion(data_url,dxf_url,directory,exportacion):
             punto.add_auto_attribs(newDate)
         bloque =  psp.add_blockref(name="CAJETIN",insert=point)
         bloque.add_auto_attribs(values)
-        actual_doc.saveas(exportacion+str(index+1)+".dxf")
+        actual_doc.saveas(exportacionPath+"\\"+str(index+1)+".dxf")
         psp = None
         mps = None
         actual_doc = None

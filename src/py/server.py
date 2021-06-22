@@ -14,7 +14,7 @@ def genPlanos():
     dxfPath = data['dxfPath']
     csvPath = data['csvPath']
     dirPath = data['dirPath']
-    # mainFuntion(excelPath, dxfPath, csvPath, dirPath)
+    mainFuntion(excelPath, dxfPath, csvPath, dirPath)
     return jsonify(excelPath, dxfPath, csvPath, dirPath)
 
 @app.route("/auto",methods=['GET', 'POST'])
