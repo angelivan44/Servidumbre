@@ -4,19 +4,52 @@ import logo from '../assets/logo.svg'
 import Input from "../components/Input";
 import Button from "../components/Button";
 import color from "../app/color";
+import { fire} from "../firebase/firebase";
+import { useState } from "react";
 export default function SignUp() {
-
   const history = useHistory()
- 
+  const [error, setError] = useState("")
+
+  const signWithEmail  = (email, password, name , avatar) => {
+    fire.auth().createUserWithEmailAndPassword(email, password)
+    .then(result=>{
+      const user = fire.auth().currentUser;
+      const storage = fire.storage();
+      if (avatar != null){
+       const task =  storage.ref(`/avatars/${user.uid}`)
+       .put(avatar)
+       task.on("state_changed",
+       s=>{console.log(s)},e=>{console.log(e)},
+       ()=>{task.snapshot.ref.getDownloadURL().then(url => {
+        user.updateProfile({
+          displayName:name,
+          photoURL:url
+        })
+        history.push("/")
+       })})
+      }
+       }).catch((error) => {
+        setError(error.message)
+       })
+  }
+
+
   return (
     <StyleDiv>
       <img src={logo}/>
       <form>
-        <Input type="email" label="Email"/>
-        <Input type="password" label="Password"/>
-        <Input type="text" label="Name"/>
-        <Input type="file" label="Avatar"/>
-        <Button type="submit"/>
+        <Input type="email" label="Email" id="email"/>
+        <Input type="password" label="Password" id="password"/>
+        <Input type="text" label="Name" id="name"/>
+        <Input type="file" label="Avatar" id="avatar"/>
+        <p>{error}</p>
+        <Button onClick={(e)=>{
+          e.preventDefault();
+          const form = e.target.closest('form')
+          console.log(form)
+          const { email, password , name , avatar} = form;
+          signWithEmail(email.value, password.value , name.value, avatar.files[0])
+        }} type="submit"/>
       </form>
       <p onClick={()=>{
         history.push("/")
@@ -36,6 +69,7 @@ margin:auto;
 & img {
   margin-top: 10px;
   margin-bottom: 20px;
+  width:200px;
 }
 
 & form {

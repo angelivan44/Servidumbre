@@ -9,12 +9,10 @@ import Card from "../components/Card";
 import DescriptionArea from "../components/Description";
 import { useState } from "react";
 
-export default function Plano() {
+export default function Plano({paths, setPaths, documentsPath, setDocumentsPath }) {
   const [itemSelect, setItemSelect] = useState("excel");
   const history = useHistory();
-  const [paths, setPaths] = useState({urlExcel:"", urlDxf:"",urlCsv:"", urlDir:""})
 
-  console.log(paths)
   return (
     <>
       <div>
@@ -65,7 +63,7 @@ export default function Plano() {
           ></TabItem>
         </StyleTab>
         <div>
-          <DescriptionArea type="plano" paths={paths}></DescriptionArea>
+          <DescriptionArea type="plano" paths={paths}  documentsPath={documentsPath}></DescriptionArea>
         </div>
       </div>
       <div>

@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
 import color from "../app/color";
-export default function Input({ type, label }) {
+export default function Input({ type, label , id }) {
 
 
   return (
     <StyleDiv>
       <label>{label}</label>
-      <input type={type} placeholder={type}/>
+      <input type={type} placeholder={type} id={id}/>
     </StyleDiv>
   );
 }

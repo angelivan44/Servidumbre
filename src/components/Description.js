@@ -7,10 +7,13 @@ import autorizacion from '../assets/autorizacion.svg';
 import contrato from '../assets/contrato.svg';
 import recibo from '../assets/recibo.svg';
 import valorizacion from '../assets/valorizacion.svg';
+import { generarAutorizacion, generarConntrato, generarRecibo, generarValorizacion, generatePlanos } from "../service/planos_service";
+import { useState } from "react";
 
-export default function DescriptionArea({ name, email, type, paths}) {
- 
-  const setImage ={
+export default function DescriptionArea({ name, email, type, paths, documentsPath}) {
+  const {urlExcel,urlDxf, urlCsv ,urlDir} = paths;
+  const {contratoPath, reciboPath, valorizacionPath, autorizacionPath } = documentsPath;
+  const setImage = {
     plano: plano,
     autorizacion:autorizacion,
     contrato: contrato,
@@ -18,22 +21,30 @@ export default function DescriptionArea({ name, email, type, paths}) {
     valorizacion:valorizacion,
   }
 
-  const sendPython = ()=>{
+  const [result, setResult] = useState("")
+  let response = ""
+
+  const  sendPython = async ()=>{
     switch (type) {
       case "plano":
-        console.log("funcion de generar planos");
+        response = await generatePlanos(urlExcel, urlDxf, urlCsv, urlDir)
+        setResult(response)
         break;
       case "autorizacion":
-        console.log("funcion para generar autorizaciones");
+        response = await generarAutorizacion(urlExcel, autorizacionPath, urlDir)
+        setResult(response)
         break;
       case "contrato":
-        console.log("funcion para generar contrato");
+        response = await generarConntrato(urlExcel, contratoPath,urlDir )
+        setResult(response)
         break;
       case "recibo":
-        console.log("funcion para generar recibo");
+        response = await generarRecibo(urlExcel, reciboPath, urlDir )
+        setResult(response)
         break;
       case "valorizacion":
-        console.log("funcion para generar valorizacion");
+        response = await generarValorizacion(urlExcel, valorizacionPath, urlDir )
+        setResult(response)
         break;
     }
   }
@@ -44,7 +55,7 @@ export default function DescriptionArea({ name, email, type, paths}) {
      <div>
        <img src={setImage[type]}/>
        <div>
-         <Card title="STATUS" type="status" content="esto es uno de prueba asdasd asdasd asdasd asdas asdsd s ds asdasds"></Card>
+         <Card title="STATUS" type="status" content={result}></Card>
          <Button selected={false} content={type} onClick={()=>{sendPython()}}></Button>
        </div>
      </div>

@@ -9,16 +9,15 @@ import Card from "../components/Card";
 import DescriptionArea from "../components/Description";
 import avatar from '../assets/avatar.png'
 
-export default function Dashboard() {
+export default function Dashboard({name, src,email }) {
   const history = useHistory();
 
   return (
     <>
       <StyleDiv>
-        <StyleImg src={avatar}/>
-        <h2>Angel Huayas</h2>
-        <p>angelhuayas@gmail.components</p>
-        <p>account create was 10 month ago</p>
+        <StyleImg src={src}/>
+        <h2>{name}</h2>
+        <p>{email}</p>
       </StyleDiv>
       <div>
         <Card title="Profile" type="user"></Card>

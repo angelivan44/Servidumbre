@@ -4,17 +4,34 @@ import logo from '../assets/logo.svg'
 import Input from "../components/Input";
 import Button from "../components/Button";
 import color from "../app/color";
+import { fire } from "../firebase/firebase";
+import { useState } from "react";
 export default function Recover() {
 
   const history = useHistory()
+  const [notification , setNotification] = useState("")
+
+  const recoverPassword = (email) => {
+    fire.auth().sendPasswordResetEmail(email).then(()=>{
+      setNotification("we send a email")
+    }).catch(error=>{
+      setNotification(error.message)
+    })
+  }
  
   return (
     <StyleDiv>
       <img src={logo}/>
       <form>
-        <Input type="email" label="Email"/>
-        <Button type="submit"/>
+        <Input type="email" label="Email" id="email"/>
+        <Button type="submit" onClick={(e)=>{
+          e.preventDefault();
+          const form = e.target.closest('form');
+          const {email} = form;
+          recoverPassword(email.value)
+        }}/>
       </form>
+      <p>{notification}</p>
       <p onClick={()=>{
         history.push("/")
       }}>Login</p>
@@ -33,6 +50,7 @@ margin:auto;
 & img {
   margin-top: 50px;
   margin-bottom: 20px;
+  width:200px;
 
 }
 

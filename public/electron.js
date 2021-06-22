@@ -1,5 +1,5 @@
 const {app, BrowserWindow, ipcMain, dialog} = require('electron')
-
+process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = '1';
 let mainview
 const dir = __dirname.replace("public","")
 const url = `File://${dir}build/index.html`
@@ -33,11 +33,12 @@ app.on('ready', ()=>{
     height:768,
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false
+      contextIsolation: false,
+      nativeWindowOpen: true,
     }
 
   })
-  mainview.loadURL('http://localhost:3000/')
+  mainview.loadURL('http://localhost:3000/',{userAgent: 'Chrome'})
   mainview.show()
   reciveIpc()
   console.log(url)

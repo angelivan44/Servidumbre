@@ -1,11 +1,28 @@
 import styled from "@emotion/styled";
 import color from "../app/color";
 import Icon from "./Icon";
-export default function TabFormato({ selected , name, onClick}) {
- 
+const { ipcRenderer } = window.require("electron");
+
+export default function TabFormato({ selected , name, onClick,type,documentsPath,setDocumentsPath}) {
+  const setFilePath = {
+    contrato:"contratoPath",
+    recibo:"reciboPath",
+    valorizacion:"valorizacionPath",
+    autorizacion:"autorizacionPath"
+  }
+
+
+  const sendOpenFormarDialog = (extension) => {
+    ipcRenderer.send('openDialog',{data:extension})
+    ipcRenderer.on('replyDialog',(e,d)=>{
+      setDocumentsPath({...documentsPath,[setFilePath[type]]:d.filepath})
+      })
+  }
+
   return (
     <StyleDiv selected={selected} onClick={onClick} > 
      <h2>{name}</h2>
+     {selected && <Icon type="plus" onClick={()=>{sendOpenFormarDialog("docx")}}></Icon>}
     </StyleDiv>
   );
 }
@@ -15,6 +32,7 @@ const StyleDiv = styled.div`
   display:flex;
   justify-content:center;
   align-items:center;
+  gap:5px;
   height: 48px;
   padding:16px;
   box-sizing:border-box;
@@ -30,6 +48,10 @@ const StyleDiv = styled.div`
   &:hover {
     background-color:${color.gris_hover};
 
+  }
+
+  & svg {
+    cursor: pointer;
   }
 
 `

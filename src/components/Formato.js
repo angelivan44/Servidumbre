@@ -6,9 +6,10 @@ import DescriptionArea from "../components/Description";
 import TabFormato from "./TabFormato";
 import { useState } from "react";
 
-export default function Formato() {
+export default function Formato({documentsPath,setDocumentsPath, paths}) {
   const history = useHistory();
   const [itemFormat, setItemFormat] = useState("contrato");
+
 
   return (
     <>
@@ -17,7 +18,9 @@ export default function Formato() {
           <TabFormato
             selected={true}
             name="CONTRATOS"
-            status="ok"
+            type="contrato"
+            documentsPath={documentsPath}
+            setDocumentsPath={setDocumentsPath}
             selected={itemFormat == "contrato"}
             onClick={() => {
               setItemFormat("contrato");
@@ -25,7 +28,9 @@ export default function Formato() {
           ></TabFormato>
           <TabFormato
             name="RECIBOS"
-            status="ok"
+            type="recibo"
+            documentsPath={documentsPath}
+            setDocumentsPath={setDocumentsPath}
             selected={itemFormat == "recibo"}
             onClick={() => {
               setItemFormat("recibo");
@@ -33,7 +38,9 @@ export default function Formato() {
           ></TabFormato>
           <TabFormato
             name="VALORIZACION"
-            status="ok"
+            type="valorizacion"
+            documentsPath={documentsPath}
+            setDocumentsPath={setDocumentsPath}
             selected={itemFormat == "valorizacion"}
             onClick={() => {
               setItemFormat("valorizacion");
@@ -41,7 +48,9 @@ export default function Formato() {
           ></TabFormato>
           <TabFormato
             name="AUTORIZACION"
-            status="ok"
+            type="autorizacion"
+            documentsPath={documentsPath}
+            setDocumentsPath={setDocumentsPath}
             selected={itemFormat == "autorizacion"}
             onClick={() => {
               setItemFormat("autorizacion");
@@ -49,7 +58,7 @@ export default function Formato() {
           ></TabFormato>
         </StyleTab>
         <div>
-          <DescriptionArea type={itemFormat}></DescriptionArea>
+          <DescriptionArea type={itemFormat} paths={paths}  documentsPath={documentsPath} ></DescriptionArea>
         </div>
       </div>
       <div>

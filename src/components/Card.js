@@ -65,5 +65,6 @@ const StyleDiv = styled.div`
     font-weight: 400;
     color: ${color.gris_text};
     text-align:justify;
+    word-break: break-all;
   }
 `;

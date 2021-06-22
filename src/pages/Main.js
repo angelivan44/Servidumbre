@@ -4,27 +4,64 @@ import HeaderArea from "../components/HeaderArea";
 import ItemList from "../components/ItemList";
 import Plano from "../components/Plano";
 import Dashboard from "../components/Dashboard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Formato from "../components/Formato";
+import { fire } from "../firebase/firebase";
 
-export default function Main() {
+export default function Main({loginUser, setLoginUser}) {
   const history = useHistory();
-  const [view , setView] = useState("formato")
+  const [view , setView] = useState("plano")
+  const [userData, setUserData] = useState({
+    displayName:"",
+    email:"",
+    photoURL:"",
+  })
+
+  const [documentsPath, setDocumentsPath] = useState(
+    { contratoPath: "" ,
+      reciboPath:"",
+      valorizacionPath:"",
+      autorizacionPath:"",
+  });
+
+  const [paths, setPaths] = useState(
+    {urlExcel:"", 
+    urlDxf:"",
+    urlCsv:"", 
+    urlDir:""})
+
+
   const viewElement = {
-    dashboard : <Dashboard/>,
-    plano: <Plano/>,
-    formato:<Formato/>
+    dashboard : <Dashboard name={userData.displayName} src={userData.photoURL} email={userData.email}/>,
+    plano: <Plano paths={paths} setPaths={setPaths} documentsPath={documentsPath} setDocumentsPath={setDocumentsPath}/>,
+    formato:<Formato paths={paths} setPaths={setPaths} documentsPath={documentsPath} setDocumentsPath={setDocumentsPath}/>
   }
+
+  useEffect(()=>{
+    setUserData(loginUser)
+  },[loginUser])
+
+  const Logout = () => {
+    fire.auth().signOut().then(()=> {
+      setLoginUser({
+        displayName:"",
+        email:"",
+        photoURL:"",
+      })
+      history.push("/")
+    })
+  }
+
 
   return (
     <StyleDiv>
       <aside>
-        <HeaderArea name="Angel"></HeaderArea>
+        <HeaderArea name={userData.displayName} src={userData.photoURL} email={userData.email}></HeaderArea>
         <div>
           <ItemList selected={view==="dashboard"} text="Dashboard" type="home" onClick={()=>{setView("dashboard")}}></ItemList>
           <ItemList selected={view==="plano"}  text="Plano" type="autodesk" onClick={()=>{setView("plano")}}></ItemList>
           <ItemList selected={view==="formato"}  text="Formato" type="word" onClick={()=>{setView("formato")}}></ItemList>
-          <ItemList   text="Logout" type="logout" onClick={()=>{history.push("/")}}></ItemList>
+          <ItemList   text="Logout" type="logout" onClick={()=>{Logout()}}></ItemList>
         </div>
       </aside>
       <StyleMain>

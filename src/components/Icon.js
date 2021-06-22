@@ -13,6 +13,7 @@ import {
   RiQuestionAnswerFill,
   RiCheckboxFill,
   RiLogoutBoxFill,
+  RiArrowUpCircleFill,
 } from "react-icons/ri";
 import { SiAutodesk } from "react-icons/si";
 import { FaFileCsv } from "react-icons/fa";
@@ -34,7 +35,8 @@ export default function Icon({ type , onClick}) {
     youtube: <RiYoutubeFill onClick={onClick}/>,
     whatsapp : <RiWhatsappFill onClick={onClick}/>,
     answer: <RiQuestionAnswerFill onClick={onClick}/>,
-    logout:<RiLogoutBoxFill onClick={onClick}/>
+    logout:<RiLogoutBoxFill onClick={onClick}/>,
+    plus:<RiArrowUpCircleFill onClick={onClick} />
   };
 
   return <>{setIcon[type]}</>;
