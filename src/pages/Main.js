@@ -72,7 +72,7 @@ export default function Main({loginUser, setLoginUser}) {
 }
 
 const StyleDiv = styled.div`
-  height: 500px;
+  height: 600px;
   display: flex;
   border: 1px solid #e5e5e5;
   & aside {

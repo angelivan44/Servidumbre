@@ -1,6 +1,6 @@
 import { useHistory } from "react-router";
 import styled from "@emotion/styled";
-import logo from '../assets/logo.svg'
+import logo from '../assets/logo 3.svg'
 import Input from "../components/Input";
 import Button from "../components/Button";
 import color from "../app/color";
@@ -35,6 +35,7 @@ useEffect(()=>{
   return (
     <StyleDiv>
       <img src={logo}/>
+      <h2>Login</h2>
       <form>
         <Input type="email" label="Email" id="email"/>
         <Input type="password" label="Password" id="password"/>
@@ -58,17 +59,15 @@ useEffect(()=>{
 
 const StyleDiv = styled.div`
 width:720px;
-height:500px;
+height:600px;
 border: 1px solid #e5e5e5;
 display:flex;
 flex-direction:column;
 align-items:center;
 margin:auto;
 & img {
-  margin-top: 50px;
-  margin-bottom: 20px;
-  width:200px;
-
+  width:300px;
+  margin-top:20px;
 }
 
 & form {
@@ -77,7 +76,7 @@ margin:auto;
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  gap:10px;
+  gap:5px;
 }
 
 & p {

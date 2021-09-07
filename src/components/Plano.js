@@ -67,7 +67,7 @@ export default function Plano({paths, setPaths, documentsPath, setDocumentsPath 
         </div>
       </div>
       <div>
-        <Card title="Data Excel" type={itemSelect}></Card>
+        <Card title={`Data ${itemSelect}`} type={itemSelect}></Card>
         <Card title="Resources" type="resources"></Card>
       </div>
     </>

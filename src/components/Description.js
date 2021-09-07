@@ -56,7 +56,7 @@ export default function DescriptionArea({ name, email, type, paths, documentsPat
        <img src={setImage[type]}/>
        <div>
          <Card title="STATUS" type="status" content={result}></Card>
-         <Button selected={false} content={type} onClick={()=>{sendPython()}}></Button>
+         <Button selected={false} content={type} type="normal" onClick={()=>{sendPython()}}></Button>
        </div>
      </div>
      <h2>{name}</h2>

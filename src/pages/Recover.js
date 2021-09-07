@@ -1,6 +1,6 @@
 import { useHistory } from "react-router";
 import styled from "@emotion/styled";
-import logo from '../assets/logo.svg'
+import logo from '../assets/logo 3.svg'
 import Input from "../components/Input";
 import Button from "../components/Button";
 import color from "../app/color";

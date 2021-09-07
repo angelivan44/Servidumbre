@@ -1,9 +1,16 @@
 import styled from "@emotion/styled";
 import color from "../app/color";
 export default function Button({  type , content, onClick }) {
+  
+  const setTypeButton = {
+    submit:"Submit",
+    normal:`Generar ${content}`,
+    update:"Update"
+  }
+  
   return (
     <StyleButton type={type} onClick={onClick}>
-      <h2>{ type? "Submit" : `Generar ${content}`}</h2>
+      <h2>{ setTypeButton[type]}</h2>
     </StyleButton>
   );
 }

@@ -8,6 +8,7 @@ import TabItem from "../components/TabItem";
 import Card from "../components/Card";
 import DescriptionArea from "../components/Description";
 import avatar from '../assets/avatar.png'
+import CardForm from "./CardForm";
 
 export default function Dashboard({name, src,email }) {
   const history = useHistory();
@@ -20,8 +21,8 @@ export default function Dashboard({name, src,email }) {
         <p>{email}</p>
       </StyleDiv>
       <div>
-        <Card title="Profile" type="user"></Card>
-        <Card title="Social Media" type="social"></Card>
+        <CardForm title="Profile" type="user"></CardForm>
+        <CardForm title="Social Media" type="social"></CardForm>
       </div>
     </>
   );

@@ -3,18 +3,18 @@ import color from "../app/color";
 import Icon from "./Icon";
 export default function Card({ title, type, content }) {
   const status = <p>{content}</p>
-  const excel = <p>La base de datos excel es la configuracion de los beneficiarios</p>
-  const autocad = <p>La base de datos en formato dxf el cual contiene el cajetin</p>
+  const excel = <p>La base de datos excel, el cual debera de contener la informacion necesaria para la generacion de los planos individuales de servidumbre. </p>
+  const autodesk = <p>La base de datos en formato dxf en version dxf: "2010/LT2010", el cual contiene el cajetin y bloques graficos. </p>
   const resources = <p>aca se dejan los link para guia del usuario</p>
-  const csv = <p>carpeta donde se guardan todos las areas de los usuarios</p>
-  const download = <p>carpeta donde se exportaran los planos</p>
+  const csv = <p>Carpeta en donde se localizan las delimitacines de las areas de los afectados en formato csv</p>
+  const download = <p>Directorio en donde se guardaran los archivos generados.</p>
 
   
   
   const setContent = {
     status: status,
     excel: excel,
-    autocad: autocad,
+    autodesk: autodesk,
     resources: resources,
     csv: csv,
     download: download
@@ -34,7 +34,7 @@ export default function Card({ title, type, content }) {
 const StyleDiv = styled.div`
   display: flex;
   flex-direction: column;
-  width: ${(props) => (props.type == "status" ? "204px" : "368px")};
+  width: ${(props) => (props.type == "status" ? "300px" : "368px")};
   height:${props => (props.type == "status" ? "204px" : "230px")};
   box-sizing: border-box;
   padding:28px 28px;
@@ -65,6 +65,6 @@ const StyleDiv = styled.div`
     font-weight: 400;
     color: ${color.gris_text};
     text-align:justify;
-    word-break: break-all;
+    word-break: normal;
   }
 `;
