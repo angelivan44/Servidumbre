@@ -32,7 +32,7 @@ export default function Main({loginUser, setLoginUser}) {
 
 
   const viewElement = {
-    dashboard : <Dashboard name={userData.displayName} src={userData.photoURL} email={userData.email}/>,
+    dashboard : <Dashboard name={userData.displayName} src={userData.photoURL} email={userData.email} setUserData={setUserData}/>,
     plano: <Plano paths={paths} setPaths={setPaths} documentsPath={documentsPath} setDocumentsPath={setDocumentsPath}/>,
     formato:<Formato paths={paths} setPaths={setPaths} documentsPath={documentsPath} setDocumentsPath={setDocumentsPath}/>
   }
@@ -61,7 +61,9 @@ export default function Main({loginUser, setLoginUser}) {
           <ItemList selected={view==="dashboard"} text="Dashboard" type="home" onClick={()=>{setView("dashboard")}}></ItemList>
           <ItemList selected={view==="plano"}  text="Plano" type="autodesk" onClick={()=>{setView("plano")}}></ItemList>
           <ItemList selected={view==="formato"}  text="Formato" type="word" onClick={()=>{setView("formato")}}></ItemList>
-          <ItemList   text="Logout" type="logout" onClick={()=>{Logout()}}></ItemList>
+          <StyleLogout>
+            <ItemList   text="Logout" type="logout" onClick={()=>{Logout()}}></ItemList>
+          </StyleLogout>
         </div>
       </aside>
       <StyleMain>
@@ -83,9 +85,9 @@ const StyleDiv = styled.div`
 const StyleMain = styled.main`
   display: flex;
 `;
-const StyleTab = styled.div`
+const StyleLogout = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+  flex-direction:column;
+  height:300px;
+  justify-content:flex-end;
 `;

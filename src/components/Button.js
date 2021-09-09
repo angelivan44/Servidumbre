@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import color from "../app/color";
-export default function Button({  type , content, onClick }) {
+export default function Button({  type , content, onClick, state }) {
   
   const setTypeButton = {
     submit:"Submit",
@@ -9,7 +9,7 @@ export default function Button({  type , content, onClick }) {
   }
   
   return (
-    <StyleButton type={type} onClick={onClick}>
+    <StyleButton type={type} onClick={onClick} disabled={state=="pending"}>
       <h2>{ setTypeButton[type]}</h2>
     </StyleButton>
   );
@@ -29,5 +29,8 @@ background-color: ${color.blue};
     font-weight: 400;
     color: #fff;
     text-align:justify;
+  }
+  &:disabled {
+    background-color:${color.gris_text}
   }
 `;

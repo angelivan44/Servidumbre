@@ -22,29 +22,36 @@ export default function DescriptionArea({ name, email, type, paths, documentsPat
   }
 
   const [result, setResult] = useState("")
+  const [status, setStatus] = useState("ready")
   let response = ""
 
   const  sendPython = async ()=>{
+    setStatus("pending")
     switch (type) {
       case "plano":
         response = await generatePlanos(urlExcel, urlDxf, urlCsv, urlDir)
         setResult(response)
+        response != "Finish job"? setStatus("failed"):setStatus("success")
         break;
       case "autorizacion":
         response = await generarAutorizacion(urlExcel, autorizacionPath, urlDir)
         setResult(response)
+        response != "Finish job"? setStatus("failed"):setStatus("success")
         break;
       case "contrato":
         response = await generarConntrato(urlExcel, contratoPath,urlDir )
         setResult(response)
+        response != "Finish job"? setStatus("failed"):setStatus("success")
         break;
       case "recibo":
         response = await generarRecibo(urlExcel, reciboPath, urlDir )
         setResult(response)
+        response != "Finish job"? setStatus("failed"):setStatus("success")
         break;
       case "valorizacion":
         response = await generarValorizacion(urlExcel, valorizacionPath, urlDir )
         setResult(response)
+        response != "Finish job"? setStatus("failed"):setStatus("success")
         break;
     }
   }
@@ -55,8 +62,8 @@ export default function DescriptionArea({ name, email, type, paths, documentsPat
      <div>
        <img src={setImage[type]}/>
        <div>
-         <Card title="STATUS" type="status" content={result}></Card>
-         <Button selected={false} content={type} type="normal" onClick={()=>{sendPython()}}></Button>
+         <Card title="STATUS" type="status" content={result} state={status}></Card>
+         <Button selected={false} content={type} type="normal" onClick={()=>{sendPython()}} state={status}></Button>
        </div>
      </div>
      <h2>{name}</h2>

@@ -14,10 +14,12 @@ import {
   RiCheckboxFill,
   RiLogoutBoxFill,
   RiArrowUpCircleFill,
+  RiLoader2Line
 } from "react-icons/ri";
 import { SiAutodesk } from "react-icons/si";
 import { FaFileCsv } from "react-icons/fa";
 import { IoIosContacts } from "react-icons/io";
+import {ImSpinner2} from "react-icons/im"
 export default function Icon({ type , onClick}) {
   const setIcon = {
     excel: <RiFileExcel2Fill onClick={onClick} />,
@@ -36,7 +38,9 @@ export default function Icon({ type , onClick}) {
     whatsapp : <RiWhatsappFill onClick={onClick}/>,
     answer: <RiQuestionAnswerFill onClick={onClick}/>,
     logout:<RiLogoutBoxFill onClick={onClick}/>,
-    plus:<RiArrowUpCircleFill onClick={onClick} />
+    plus:<RiArrowUpCircleFill onClick={onClick} />,
+    load:<RiLoader2Line onClick={onClick}/>,
+    load2:<ImSpinner2 onClick={onClick}/>
   };
 
   return <>{setIcon[type]}</>;

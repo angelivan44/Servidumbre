@@ -10,7 +10,7 @@ import DescriptionArea from "../components/Description";
 import avatar from '../assets/avatar.png'
 import CardForm from "./CardForm";
 
-export default function Dashboard({name, src,email }) {
+export default function Dashboard({name, src,email, setUserData }) {
   const history = useHistory();
 
   return (
@@ -21,7 +21,7 @@ export default function Dashboard({name, src,email }) {
         <p>{email}</p>
       </StyleDiv>
       <div>
-        <CardForm title="Profile" type="user"></CardForm>
+        <CardForm title="Profile" type="user" setUserData={setUserData}></CardForm>
         <CardForm title="Social Media" type="social"></CardForm>
       </div>
     </>
