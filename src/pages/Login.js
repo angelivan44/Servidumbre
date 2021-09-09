@@ -6,6 +6,7 @@ import Button from "../components/Button";
 import color from "../app/color";
 import { fire } from "../firebase/firebase";
 import { useEffect, useState } from "react";
+import images from "../app/images";
 export default function Login({setLoginUser, loginUser}) {
 
 
@@ -35,7 +36,7 @@ useEffect(()=>{
 
   return (
     <StyleDiv>
-      <img src={logo}/>
+      {images.logo}
       <h2>Login</h2>
       <form>
         <Input type="email" label="Email" id="email"/>

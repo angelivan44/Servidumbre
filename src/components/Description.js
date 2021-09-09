@@ -9,16 +9,17 @@ import recibo from '../assets/recibo.svg';
 import valorizacion from '../assets/valorizacion.svg';
 import { generarAutorizacion, generarConntrato, generarRecibo, generarValorizacion, generatePlanos } from "../service/planos_service";
 import { useState } from "react";
+import images from "../app/images";
 
 export default function DescriptionArea({ name, email, type, paths, documentsPath}) {
   const {urlExcel,urlDxf, urlCsv ,urlDir} = paths;
   const {contratoPath, reciboPath, valorizacionPath, autorizacionPath } = documentsPath;
   const setImage = {
-    plano: plano,
-    autorizacion:autorizacion,
-    contrato: contrato,
-    recibo:recibo,
-    valorizacion:valorizacion,
+    plano: images.plano,
+    autorizacion:images.autorizacion,
+    contrato: images.contrato,
+    recibo:images.recibo,
+    valorizacion:images.valorizacion,
   }
 
   const [result, setResult] = useState("")
@@ -60,7 +61,7 @@ export default function DescriptionArea({ name, email, type, paths, documentsPat
     <StyleDiv > 
      <h2>{`Generador de ${type}`}</h2>
      <div>
-       <img src={setImage[type]}/>
+       {setImage[type]}
        <div>
          <Card title="STATUS" type="status" content={result} state={status}></Card>
          <Button selected={false} content={type} type="normal" onClick={()=>{sendPython()}} state={status}></Button>

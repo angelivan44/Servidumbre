@@ -6,6 +6,7 @@ import Button from "../components/Button";
 import color from "../app/color";
 import { fire} from "../firebase/firebase";
 import { useState } from "react";
+import images from "../app/images";
 export default function SignUp() {
   const history = useHistory()
   const [error, setError] = useState("")
@@ -41,7 +42,7 @@ export default function SignUp() {
 
   return (
     <StyleDiv>
-      <img src={logo}/>
+      {images.logo}
       <h2>Sign Up</h2>
       <form>
         <Input type="email" label="Email" id="email"/>

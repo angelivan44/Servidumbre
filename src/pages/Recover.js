@@ -6,6 +6,7 @@ import Button from "../components/Button";
 import color from "../app/color";
 import { fire } from "../firebase/firebase";
 import { useState } from "react";
+import images from "../app/images";
 export default function Recover() {
 
   const history = useHistory()
@@ -21,7 +22,7 @@ export default function Recover() {
  
   return (
     <StyleDiv>
-      <img src={logo}/>
+      {images.logo}
       <form>
         <Input type="email" label="Email" id="email"/>
         <Button type="submit" onClick={(e)=>{
