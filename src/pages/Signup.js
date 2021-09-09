@@ -27,6 +27,11 @@ export default function SignUp() {
         })
         history.push("/")
        })})
+      } else {
+        user.updateProfile({
+          displayName:name
+        })
+        history.push("/")
       }
        }).catch((error) => {
         setError(error.message)

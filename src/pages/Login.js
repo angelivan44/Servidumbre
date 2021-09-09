@@ -25,7 +25,8 @@ useEffect(()=>{
 
   const signWithEmail  = (email, password) => {
     fire.auth().signInWithEmailAndPassword(email, password).then(result => {
-      setLoginUser(result.user)
+      const photo = result.user.photoURL || "https://i.stack.imgur.com/l60Hf.png"
+      setLoginUser({...result.user,photoURL:photo})
     }).catch((error)=>{
       setError(error.message)
     })
