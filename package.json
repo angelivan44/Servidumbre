@@ -26,13 +26,21 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "electron public/electron.js"
+    "dev": "electron public/electron.js",
+    "dist": "electron-builder"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
+  },
+  "build": {
+    "appId": "com.electron.servipy.app",
+    "target":"NSIS",
+    "nsis":{
+      "oneClick":false
+    }
   },
   "browserslist": {
     "production": [
