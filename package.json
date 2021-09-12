@@ -6,7 +6,7 @@
   "homepage": ".",
   "dependencies": {
     "@emotion/css": "^11.1.3",
-    "@emotion/react": "^11.1.5",
+    "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -15,10 +15,10 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
-    "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0",
+    "react-router": "^5.2.1",
+    "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
-    "styled-components": "^5.3.0",
+    "styled-components": "^5.3.1",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
@@ -37,9 +37,11 @@
   },
   "build": {
     "appId": "com.electron.servipy.app",
-    "target":"NSIS",
-    "nsis":{
-      "oneClick":false
+    "asar": false,
+    "target": "NSIS",
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory":true
     }
   },
   "browserslist": {
@@ -51,11 +53,11 @@
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 1 safari version"
+      "last 1 safari version" 
     ]
   },
   "devDependencies": {
-    "electron": "^13.1.2",
+    "electron": "^13.3.0",
     "electron-builder": "^22.11.7"
   }
 }

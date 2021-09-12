@@ -1,9 +1,11 @@
-const {app, BrowserWindow, ipcMain, dialog} = require('electron')
+const {app, BrowserWindow, ipcMain, dialog, autoUpdater } = require('electron')
 process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = '1';
 let mainview
 const dir = __dirname.replace("public","")
-const url = `File://${dir}build/index.html`
-
+const url = `File://${dir}/index.html`
+const server = "https://hazel-versel-aks1097lk-angelivan44.vercel.app/"
+const url2 = `${server}/update/${process.platform}/${app.getVersion()}`
+autoUpdater.setFeedURL({ url2 })
 const app_exe =  require('child_process').spawn(`${__dirname}\\server\\server.exe`)
 const newURl = `${__dirname}\\server\\server.exe`
 const reciveIpc = ()=> {
@@ -40,7 +42,7 @@ app.on('ready', ()=>{
     }
 
   })
-  mainview.loadURL('http://localhost:3000/',{userAgent: 'Chrome'})
+  mainview.loadURL(url, { userAgent: 'Chrome' })
   mainview.show()
   reciveIpc()
   console.log(url)

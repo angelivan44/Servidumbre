@@ -32,27 +32,27 @@ export default function DescriptionArea({ name, email, type, paths, documentsPat
       case "plano":
         response = await generatePlanos(urlExcel, urlDxf, urlCsv, urlDir)
         setResult(response)
-        response != "Finish job"? setStatus("failed"):setStatus("success")
+        response != "Finish Job"? setStatus("failed"):setStatus("success")
         break;
       case "autorizacion":
         response = await generarAutorizacion(urlExcel, autorizacionPath, urlDir)
         setResult(response)
-        response != "Finish job"? setStatus("failed"):setStatus("success")
+        response != "Finish Job"? setStatus("failed"):setStatus("success")
         break;
       case "contrato":
         response = await generarConntrato(urlExcel, contratoPath,urlDir )
         setResult(response)
-        response != "Finish job"? setStatus("failed"):setStatus("success")
+        response != "Finish Job"? setStatus("failed"):setStatus("success")
         break;
       case "recibo":
         response = await generarRecibo(urlExcel, reciboPath, urlDir )
         setResult(response)
-        response != "Finish job"? setStatus("failed"):setStatus("success")
+        response != "Finish Job"? setStatus("failed"):setStatus("success")
         break;
       case "valorizacion":
         response = await generarValorizacion(urlExcel, valorizacionPath, urlDir )
         setResult(response)
-        response != "Finish job"? setStatus("failed"):setStatus("success")
+        response != "Finish Job"? setStatus("failed"):setStatus("success")
         break;
     }
   }
