@@ -4,6 +4,8 @@ let mainview
 const dir = __dirname.replace("public","")
 const url = `File://${dir}build/index.html`
 
+const app_exe =  require('child_process').spawn(`${__dirname}\\server\\server.exe`)
+const newURl = `${__dirname}\\server\\server.exe`
 const reciveIpc = ()=> {
   ipcMain.on("openDialog",(e, arg)=>{
     if(arg.data !== "csv"){
