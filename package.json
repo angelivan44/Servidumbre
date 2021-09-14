@@ -1,6 +1,6 @@
 {
-  "name": "electron-app-class",
-  "version": "0.2.0",
+  "name": "seripy",
+  "version": "0.3.0",
   "private": true,
   "main": "public/electron.js",
   "homepage": ".",

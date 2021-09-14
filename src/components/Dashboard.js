@@ -22,7 +22,7 @@ export default function Dashboard({name, src,email, setUserData }) {
       </StyleDiv>
       <div>
         <CardForm title="Profile" type="user" setUserData={setUserData}></CardForm>
-        <CardForm title="Social Media Program" type="social"></CardForm>
+        <CardForm title="Social Media" type="social"></CardForm>
       </div>
     </>
   );
