@@ -6,9 +6,9 @@ export default function Card({ title, type, content, state }) {
   const status = <p>{content}</p>
   const excel = <p>La base de datos excel, el cual debera de contener la informacion necesaria para la generacion de los planos individuales de servidumbre. </p>
   const autodesk = <p>La base de datos en formato dxf en version dxf: "2010/LT2010", el cual contiene el cajetin y bloques graficos. </p>
-  const resources = <p>aca se dejan los link para guia del usuario</p>
-  const csv = <p>Carpeta en donde se localizan las delimitacines de las areas de los afectados en formato csv</p>
-  const download = <p>Directorio en donde se guardaran los archivos generados.</p>
+  const resources = <p>links para descarga de los recursos</p>
+  const csv = <p>Carpeta en donde se localizan las delimitaciones de las areas de los afectados en formato csv</p>
+  const download = <p>Directorio en donde se guardaran los archivos generados en formato dxf.</p>
 
   
   
